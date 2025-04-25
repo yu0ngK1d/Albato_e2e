@@ -1,6 +1,6 @@
 const { expect } = require('@playwright/test');
 
-exports.CheckoutPage = class CheckoutPage {
+class CheckoutPage {
   constructor(page) {
     this.page = page;
     this.checkoutBtn = page.locator('[data-test="checkout"]');
@@ -9,17 +9,18 @@ exports.CheckoutPage = class CheckoutPage {
     this.postalCode = page.locator('[data-test="postalCode"]');
     this.continueBtn = page.locator('[data-test="continue"]');
     this.finishBtn = page.locator('[data-test="finish"]');
-    this.completeHeader = page.locator('.complete-header');
+    this.successMsg = page.locator('[data-test="complete-header"]');
+    this.error = page.locator('[data-test="error"]');
   }
 
   async startCheckout() {
     await this.checkoutBtn.click();
   }
 
-  async fillUserInfo(first, last, postal) {
+  async fillUserInfo(first, last, zip) {
     await this.firstName.fill(first);
     await this.lastName.fill(last);
-    await this.postalCode.fill(postal);
+    await this.postalCode.fill(zip);
     await this.continueBtn.click();
   }
 
@@ -28,6 +29,16 @@ exports.CheckoutPage = class CheckoutPage {
   }
 
   async assertSuccess() {
-    await expect(this.completeHeader).toHaveText('Thank you for your order!');
+    await expect(this.successMsg).toHaveText('Thank you for your order!');
   }
-};
+
+  async validateFormErrors(first, last, zip) {
+    await this.firstName.fill(first);
+    await this.lastName.fill(last);
+    await this.postalCode.fill(zip);
+    await this.continueBtn.click();
+    await expect(this.error).toBeVisible();
+  }
+}
+
+module.exports = CheckoutPage; // Убедись, что экспорт есть
