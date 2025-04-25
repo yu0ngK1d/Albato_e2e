@@ -39,7 +39,7 @@ test.describe('SauceDemo Tests', () => {
     await expect(page).toHaveURL(/inventory/, { timeout: 15000 });
     await inventory.addItem();
     await inventory.gotoCart();
-    console.log('Remove buttons count:', await cart.removeBtn.count()); // Отладка
+    console.log('Remove buttons count:', await cart.removeBtn.count()); 
     await expect(cart.removeBtn).toHaveCount(1, { timeout: 10000 });
     await cart.removeItem();
     await expect(cart.removeBtn).toHaveCount(0, { timeout: 10000 });

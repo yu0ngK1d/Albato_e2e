@@ -34,4 +34,4 @@ class LoginPage {
   }
 }
 
-module.exports = LoginPage; // Добавляем экспорт
+module.exports = LoginPage;

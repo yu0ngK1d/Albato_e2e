@@ -41,4 +41,4 @@ class CheckoutPage {
   }
 }
 
-module.exports = CheckoutPage; // Убедись, что экспорт есть
+module.exports = CheckoutPage; 

@@ -32,17 +32,15 @@ for (const user of USERS) {
         await expect(login.error).toHaveText('Epic sadface: Sorry, this user has been locked out.');
       } else {
         if (user === 'visual_user') {
-          await expect(page).toHaveURL(/inventory/, { timeout: 15000 });
-          // Пропускаем проверку cartIcon/addBtn для visual_user
+          await expect(page).toHaveURL(/inventory/, { timeout: 15000 }); // Пропускаем проверку cartIcon/addBtn для visual_user
         } else if (user === 'performance_glitch_user') {
-          console.log('Starting inventory page load for performance_glitch_user'); // Добавляем отладку
+          console.log('Starting inventory page load for performance_glitch_user'); 
           await expect(page).toHaveURL(/inventory/, { timeout: 30000 });
-          console.log('Inventory page loaded'); // Добавляем отладку
+          console.log('Inventory page loaded'); 
           await expect(products.cartIcon).toBeVisible({ timeout: 30000 });
           await expect(products.addBtn).toBeVisible({ timeout: 30000 });
         } else if (user === 'problem_user' || user === 'error_user') {
-          await expect(page).toHaveURL(/inventory/, { timeout: 15000 });
-          // Пропускаем проверку addBtn для problem_user и error_user
+          await expect(page).toHaveURL(/inventory/, { timeout: 15000 }); // Пропускаем проверку addBtn для problem_user и error_user
           await expect(products.cartIcon).toBeVisible({ timeout: 10000 });
         } else {
           await expect(page).toHaveURL(/inventory/, { timeout: 15000 });
