@@ -3,9 +3,7 @@ SauceDemo E2E Tests
 Автоматизированные E2E-тесты для сайта [saucedemo.com](https://www.saucedemo.com), реализованные с использованием Playwright и паттерна Page Object Model (POM).
 
 ---
-
  Требования
-
 - Node.js (версия 16 или выше)
 - Установленный Playwright
 
