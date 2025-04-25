@@ -11,7 +11,7 @@ SauceDemo E2E Tests
 
 1. Склонируй репозиторий:
    git clone <https://github.com/yu0ngK1d/Albato_e2e>
-   cd saucedemo-e2
+   cd saucedemo-e2e
 2. Установи зависимости:
    npm install
 3. Установи Playwright и браузеры:
